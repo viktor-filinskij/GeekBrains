@@ -22,6 +22,7 @@ def duplicate_file(filename):
 def sys_info():
     print("System information: ")
     print("\tNumber of processors: ", psutil.cpu_count())
+    print("\tMemory info: ", psutil.virtual_memory())
     print("\tOS Platform: ", sys.platform)
     print("\tFilesystem encoding: ", sys.getfilesystemencoding())
     print("\tCurrent workdir: ", os.getcwd())
