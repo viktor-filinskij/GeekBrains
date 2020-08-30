@@ -7,16 +7,17 @@ import platform
 import shutil
 
 
-def duplicate_file(file_name):
-   if os.path.isfile(file_name):
-       newfile = file_name + '.dupl'
-       shutil.copy(file_name, newfile)
-       if os.path.exists(newfile):
-           print(f"file: { file_name } was copied to { newfile }")
-           return True
-       else:
-           print("Error while copy")
-           return False
+def duplicate_file(filename):
+    if os.path.isfile(filename):
+        new_file = filename + '.dupl'
+        shutil.copy(filename, new_file)
+        if os.path.exists(new_file):
+            print(f"file: { filename } was copied to { new_file }")
+            return True
+        else:
+            print("Error while copy")
+            return False
+
 
 def sys_info():
     print("System information: ")
@@ -27,19 +28,20 @@ def sys_info():
     print("\tCurrent user: ", os.getlogin())
     return 0
 
-def remove_duplicates(directory):
-    file_list = os.listdir(directory)
+
+def remove_duplicates(directory_name):
+    f_list = os.listdir(directory_name)
     counter = 0
-    for i in file_list:
-        fullname = os.path.join(directory, i)
+    for f in f_list:
+        fullname = os.path.join(directory_name, f)
         if fullname.endswith('.dupl'):
             os.remove(fullname)
             counter += 1
     print(f"Removed: { counter } files")
     print("Files in directory:")
-    for file_name in os.listdir(directory):
-        if os.path.isfile(file_name):
-            print(file_name)
+    for filename in os.listdir(directory_name):
+        if os.path.isfile(filename):
+            print(filename)
 
 
 print("Hello")
@@ -47,7 +49,7 @@ answer = ''
 while answer != 'q':
     answer = input("Let's do some work (Y/N/q to quit): ")
     if answer == 'Y': 
-        print("What do you preferr to do: ")
+        print("What do you prefer to do: ")
         print(" [1] - list files")
         print(" [2] - system information")
         print(" [3] - process information")
@@ -61,9 +63,9 @@ while answer != 'q':
         elif action == 2:
             sys_info()
         elif action == 3:
-            print(psutils.pids())
+            print(psutil.pids())
         elif action == 4:
-            print("Dublicate files")
+            print("Duplicate files")
             file_list = os.listdir()
             i = 0
             while i < len(file_list):
@@ -72,7 +74,7 @@ while answer != 'q':
         elif action == 5:
             print("Files in current directory: \n", os.listdir())
             file_name = input("Enter file name to duplicate: ")
-            dublicate_file(file_name)
+            duplicate_file(file_name)
             print("Files in current directory: \n", os.listdir())
         elif action == 6:
             directory = input("enter path to directory to cleanup from dupl files: ")
