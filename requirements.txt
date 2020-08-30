@@ -1,0 +1,4 @@
+# on fedora run
+# sudo yum install python3-devel python3-devtools
+psutil
+wheel
