@@ -15,6 +15,11 @@ def main():
         return max_digest
 
     def swap_val(v1, v2):
+        # in case v1 and v2 are integers we can use:
+        # a = a*b
+        # b = int(a / b)
+        # a = int(a / b)
+        # return f"a = { a }, b = { b }"
         v3 = v1
         v1 = v2
         v2 = v3
